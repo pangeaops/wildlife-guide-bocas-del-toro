@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 20% 96%;
+    --foreground: 180 30% 14%;
+    --card: 0 0% 100%;
+    --card-foreground: 180 30% 14%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 180 30% 14%;
+    --primary: 180 30% 14%;
+    --primary-foreground: 40 20% 96%;
+    --secondary: 180 10% 50%;
+    --secondary-foreground: 180 30% 14%;
+    --muted: 40 15% 92%;
+    --muted-foreground: 180 8% 46%;
+    --accent: 43 65% 53%;
+    --accent-foreground: 180 30% 14%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 180 10% 88%;
+    --input: 180 10% 88%;
+    --ring: 43 65% 53%;
+    --radius: 0.25rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+/* Typography */
+.font-display {
+  font-family: 'Lato', sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.font-body {
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* Custom Colors */
+.bg-warm-white {
+  background-color: #F6F5F2;
+}
+
+.bg-deep-teal {
+  background-color: #0E3A3A;
+}
+
+.text-warm-white {
+  color: #F6F5F2;
+}
+
+.text-deep-teal {
+  color: #1A2D2D;
+}
+
+.text-sage {
+  color: #6E7F7F;
+}
+
+.text-gold {
+  color: #D4A03A;
+}
+
+.bg-gold {
+  background-color: #D4A03A;
+}
+
+/* Grain Overlay */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Section Base */
+.section-pinned {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Image Treatment */
+.image-nature-grade {
+  filter: saturate(0.92) contrast(1.05);
+}
+
+/* Button Styles */
+.btn-gold {
+  @apply px-6 py-3 bg-gold text-deep-teal font-bold text-xs tracking-widest uppercase transition-all duration-300;
+  font-family: 'Lato', sans-serif;
+}
+
+.btn-gold:hover {
+  @apply bg-opacity-90 transform scale-105;
+}
+
+/* Card Styles */
+.card-highlight {
+  @apply bg-white p-6 shadow-lg;
+  box-shadow: 0 18px 45px rgba(0,0,0,0.10);
+}
+
+/* Label Styles */
+.label-season {
+  @apply text-gold text-xs font-bold tracking-widest uppercase;
+  font-family: 'Lato', sans-serif;
+}
+
+/* Caption Styles */
+.caption-text {
+  @apply text-sage text-sm font-medium;
+}
+
+/* Species Tag Styles */
+.species-tag {
+  @apply inline-flex items-center px-3 py-1.5 bg-warm-white border border-[#E5E5E5] text-deep-teal text-xs font-medium transition-all duration-200;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.species-tag:hover {
+  @apply text-gold;
+  border-color: #D4A03A;
+}
+
+/* Agriculture Highlight Card */
+.agri-card {
+  @apply relative overflow-hidden;
+}
+
+.agri-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #D4A03A 0%, #E8C547 50%, #D4A03A 100%);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F6F5F2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6E7F7F;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1A2D2D;
+}
+
+/* Animation Utilities */
+.will-change-transform {
+  will-change: transform;
+}
+
+/* Thumbnail Float Animation */
+@keyframes thumbnailFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.thumbnail-float {
+  animation: thumbnailFloat 5s ease-in-out infinite;
+}
+
+.thumbnail-float-delay-1 {
+  animation: thumbnailFloat 5.5s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+.thumbnail-float-delay-2 {
+  animation: thumbnailFloat 6s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  .font-display {
+    font-size: 0.9em;
+  }
+}
+
+/* Section number badge */
+.section-badge {
+  @apply inline-flex items-center justify-center w-8 h-8 rounded-full bg-gold text-white text-sm font-bold;
+  font-family: 'Lato', sans-serif;
+}

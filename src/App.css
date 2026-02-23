@@ -1,0 +1,161 @@
+/* App-specific styles */
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: auto;
+}
+
+/* Ensure sections stack properly */
+.section-pinned {
+  will-change: transform;
+}
+
+/* Image hover effects */
+.image-nature-grade {
+  transition: transform 0.6s ease-out;
+}
+
+/* Card hover effects */
+.card-highlight {
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.card-highlight:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 55px rgba(0,0,0,0.12);
+}
+
+/* Plan cards hover */
+.plan-card {
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.plan-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+
+/* Form input focus states */
+input:focus, select:focus, textarea:focus {
+  border-color: #D4A03A;
+}
+
+/* Navigation transition */
+nav {
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Mobile responsiveness for split sections */
+@media (max-width: 1024px) {
+  .section-pinned {
+    min-height: 100vh;
+    height: auto;
+  }
+  
+  /* Adjust split layouts for tablet */
+  [class*="-image"] {
+    width: 100% !important;
+    height: 50vh !important;
+    position: relative !important;
+  }
+  
+  [class*="-panel"] {
+    width: 100% !important;
+    height: auto !important;
+    position: relative !important;
+    padding: 2rem 0;
+  }
+  
+  [class*="-panel-content"] {
+    width: 100% !important;
+    height: auto !important;
+    position: relative !important;
+    padding: 2rem 7vw !important;
+  }
+}
+
+/* Thumbnail hover effects */
+[class*="marine-thumb-"] {
+  transition: transform 0.3s ease-out;
+}
+
+[class*="marine-thumb-"]:hover {
+  transform: scale(1.03) !important;
+}
+
+/* Button ripple effect */
+.btn-gold {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gold::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.btn-gold:active::after {
+  width: 200%;
+  height: 200%;
+}
+
+/* List item hover */
+[class*="-list-item"] {
+  transition: color 0.2s ease;
+}
+
+[class*="-list-item"]:hover {
+  color: #D4A03A;
+}
+
+/* Caption styling */
+[class*="-caption"] {
+  border-left: 2px solid #D4A03A;
+  padding-left: 1rem;
+}
+
+/* Ensure text remains readable */
+.text-shadow-soft {
+  text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* Loading state for images */
+img {
+  background-color: #F6F5F2;
+}
+
+/* Prevent text selection on interactive elements */
+button, a {
+  user-select: none;
+}
+
+/* Focus visible for accessibility */
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid #D4A03A;
+  outline-offset: 2px;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .thumbnail-float,
+  .thumbnail-float-delay-1,
+  .thumbnail-float-delay-2 {
+    animation: none !important;
+  }
+}
